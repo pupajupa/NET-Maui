@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppAntikhovitch.View.CalculatorPage"
+             BackgroundColor="#010101">
+    
+    <Grid Padding="10,0,10,0" RowSpacing="8" ColumnSpacing="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label
+            x:Name = "LResult" HorizontalTextAlignment="End" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" LineBreakMode="NoWrap" VerticalTextAlignment="Center" TextColor="#C5C5C5" FontAttributes="Bold" FontSize="48" />
+        <Button Grid.Column="0" Grid.Row="1"
+            Text = "C" CornerRadius="10" FontSize="36" BackgroundColor="#171717" TextColor="#962A24" Clicked="OnClearClicked" />
+        <Button Grid.Column="1" Grid.Row="1"
+                Text = "√" CornerRadius="10" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="RootClicked" />
+        <Button Grid.Column="2" Grid.Row="1"
+                Text = "^" CornerRadius="10" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="ExponentiationClicked" />
+        <Button Grid.Column="3" Grid.Row="1"
+                Text = "÷" CornerRadius="10" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="OperatorSelectedClicked" />
+        <Button Grid.Column="0" Grid.Row="2"
+                Text = "7" CornerRadius="10" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="NumberClicked" />
+        <Button Grid.Column="1" Grid.Row="2"
+                Text = "8" CornerRadius="10" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="NumberClicked" />
+        <Button Grid.Column="2" Grid.Row="2"
+                Text = "9" CornerRadius="10" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="NumberClicked" />
+        <Button Grid.Column="3" Grid.Row="2"
+                Text = "×" CornerRadius="10" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="OperatorSelectedClicked" />
+        <Button Grid.Column="0" Grid.Row="3"
+                Text = "4" CornerRadius="8" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="NumberClicked" />
+        <Button Grid.Column="1" Grid.Row="3"
+                Text = "5" CornerRadius="8" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="NumberClicked" />
+        <Button Grid.Column="2" Grid.Row="3"
+                Text = "6" CornerRadius="8" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="NumberClicked"/>
+        <Button Grid.Column="3" Grid.Row="3"
+                Text = "−" CornerRadius="8" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="OperatorSelectedClicked"/>
+        <Button Grid.Column="0" Grid.Row="4"
+                Text = "1" CornerRadius="8" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="NumberClicked"/>
+        <Button Grid.Column="1" Grid.Row="4"
+                Text = "2" CornerRadius="8" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="NumberClicked"/>
+        <Button Grid.Column="2" Grid.Row="4"
+                Text = "3" CornerRadius="8" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="NumberClicked"/>
+        <Button Grid.Column="3" Grid.Row="4"
+                Text = "+" CornerRadius="8" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="OperatorSelectedClicked"/>
+        <Button Grid.Column="0" Grid.Row="5"
+                Text = "±" CornerRadius="8" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="PlusOrMinusClicked"/>
+        <Button Grid.Column="1" Grid.Row="5"
+                Text = "0" CornerRadius="2" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="NumberClicked"/>
+        <Button Grid.Column="2" Grid.Row="5"
+                Text = "," CornerRadius="8" FontSize="36" BackgroundColor="#171717" TextColor="#A0A0A0" Clicked="CommaClicked"/>
+        <Button Grid.Column="3" Grid.Row="5"
+                Text = "=" CornerRadius="8" FontSize="36" BackgroundColor="#ABABAB" TextColor="#141414" Clicked="EqualsClicked"/>
+    </Grid>
+</ContentPage>
