@@ -20,4 +20,8 @@
         Title="Integral calculation"
         ContentTemplate="{DataTemplate view:IntegralCalculationPage}"
         Route="IntegralCalculationPage" />
+    <ShellContent
+        Title="Database"
+        ContentTemplate="{DataTemplate view:HospitalRoomPage}"
+        Route="HospitalRoomPage"/>
 </Shell>
