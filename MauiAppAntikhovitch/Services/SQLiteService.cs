@@ -20,43 +20,47 @@ namespace MauiAppAntikhovitch.Services
         SQLiteConnection Database;
         public void Init()
         {
-            if (Database is not null)
-                return;
-            Database = new SQLiteConnection(_dbPath, Flags);
-            Database.CreateTable<HospitalRoom>();
-            Database.CreateTable<Patient>();
-            int NumHospitalRoom = new Random().Next(2, 4);
-            for (int i = 0; i < NumHospitalRoom; i++)
+            if (File.Exists(_dbPath))
             {
-                var room = new HospitalRoom
+                Database = new SQLiteConnection(_dbPath,Flags);
+            }
+            else
+            {
+                Database = new SQLiteConnection(_dbPath, Flags);
+                Database.CreateTable<HospitalRoom>();
+                Database.CreateTable<Patient>();
+                Random random = new Random(); // Создание одного экземпляра Random
+                int NumHospitalRoom = random.Next(2, 4);
+                for (int i = 0; i < NumHospitalRoom; i++)
                 {
-                    RoomNumber = new Random().Next(1, 100),
-                    BedCount = new Random().Next(1, 5)
-                };
-                Database.Insert(room);
-                int PatientCount = new Random().Next(5, 10);
-                for (int j = 0; j < PatientCount; j++)
-                {
-                    string male, name;
-                    Random random = new Random();
-                    if (i % 2 == 0)
+                    var room = new HospitalRoom
                     {
-                        name = m_names[new Random().Next(0, m_names.Count)];
-                        male = "M";
-                    }
-                    else
-                    {
-                        male = "F";
-                        name = f_names[new Random().Next(0, f_names.Count)];
-                    }
-                    var patient = new Patient
-                    {
-                        Name = name,
-                        Gender = male,
-                        Age = new Random().Next(20, 50),
-                        HospitalRoomId = i + 1,
+                        RoomNumber = $"Room {random.Next(1, 100)}",
                     };
-                    Database.Insert(patient);
+                    Database.Insert(room);
+                    int PatientCount = random.Next(5, 10);
+                    for (int j = 0; j < PatientCount; j++)
+                    {
+                        string male, name;
+                        if (i % 2 == 0)
+                        {
+                            name = m_names[random.Next(0, m_names.Count)];
+                            male = "M";
+                        }
+                        else
+                        {
+                            male = "F";
+                            name = f_names[random.Next(0, f_names.Count)];
+                        }
+                        var patient = new Patient
+                        {
+                            Name = name,
+                            Gender = male,
+                            Age = random.Next(20, 50),
+                            HospitalRoomId = i + 1,
+                        };
+                        Database.Insert(patient);
+                    }
                 }
             }
         }

@@ -3,15 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppAntikhovitch.View.HospitalRoomPage"
              Title="HospitalRoomPage">
-    <StackLayout Padding="8">
-        <Label x:Name="header" Text="Выберите язык" FontSize="18" />
-        <Picker x:Name="languagePicker" Title = "Язык программирования"
-                SelectedIndexChanged="PickerSelectedIndexChanged">
-            <Picker.Items>
-                <x:String>C#</x:String>
-                <x:String>JavaScript</x:String>
-                <x:String>Java</x:String>
-            </Picker.Items>
-        </Picker>
+    <StackLayout Padding="8" Spacing="20">
+        <Picker x:Name="HospitalRoomsPicker" Title = "Select a hospital room" SelectedIndexChanged="SelectedHospitalRoom" Loaded="LoadedHospitalRooms" 
+                ItemsSource="{Binding HospitalRooms}" ItemDisplayBinding="{Binding RoomNumber}"/>
+
+        <CollectionView x:Name="PatientsCollection" Grid.Row="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Frame Background="WhiteSmoke" HeightRequest="60" WidthRequest="300" Margin="0,0,0,10" Grid.ColumnSpan="10">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <!-- Объединенный Label для Name, Age и Gender -->
+                                <Label HeightRequest="20" TextColor="Black" HorizontalOptions="CenterAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Name}" Grid.Column="0" TextColor="Black" FontAttributes="Bold"/>
+                                            <Span Text="     Age: " TextColor="Grey"/>
+                                            <Span Text="{Binding Age}" Grid.Column="1" TextColor="Grey" FontAttributes="Bold"/>
+                                            <Span Text="     Gender: " TextColor="Grey"/>
+                                            <Span Text="{Binding Gender}" Grid.Column="2" TextColor="Grey" FontAttributes="Bold"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
     </StackLayout>
 </ContentPage>

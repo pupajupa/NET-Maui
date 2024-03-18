@@ -12,7 +12,6 @@ namespace MauiAppAntikhovitch.Entities
     {
         [PrimaryKey,AutoIncrement,Indexed]
         public int Id { get; set; }
-        public int RoomNumber { get; set; }
-        public int BedCount { get; set; }
+        public string RoomNumber { get; set; }
     }
 }
