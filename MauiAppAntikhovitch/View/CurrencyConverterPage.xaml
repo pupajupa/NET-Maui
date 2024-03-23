@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppAntikhovitch.View.CurrencyConverterPage"
+             Title="CurrencyConverterPage">
+    <VerticalStackLayout VerticalOptions="CenterAndExpand">
+        <Label Text="BYN Rate" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="Header"  FontAttributes="Bold" Margin="15"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="20,0,20,0" Spacing="10">
+            <Label Text="Select a date" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Gray" FontSize="Medium" />
+            <DatePicker x:Name="datePicker" HorizontalOptions="Center" MinimumDate="01/01/2000" MaximumDate="03/25/2024" Date="03/25/2024" DateSelected="DateChanged" FontSize="18" />
+        </StackLayout>
+        <Editor x:Name="EnterRate" Margin="0,10,0,0" IsReadOnly="True" AutoSize="TextChanges" VerticalOptions="Center" VerticalTextAlignment="Center" CharacterSpacing="3" IsSpellCheckEnabled="False"
+            FontSize="19" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+        <Label Text="Converter" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Header" Margin="0,50,0,15"/>
+        <Grid ColumnSpacing="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.24*"/>
+                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition Width="0.24*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Entry Text="BYN" HorizontalTextAlignment="Center" IsReadOnly="True" Grid.Column="1" Grid.Row="0" FontSize="18" FontAttributes="Bold"/>
+            <Picker x:Name="Currency" ItemsSource="{Binding Currencies}"
+                     SelectedItem="{Binding SelectedCurrency}" FontAttributes="Bold" FontSize="18" HorizontalTextAlignment="Center" Grid.Column="2" Grid.Row="0"/>
+            <Entry x:Name="EnterLeft" Text="0" HorizontalTextAlignment="Center" FontSize="18" Keyboard="Numeric" Grid.Column="1" Grid.Row="1"/>
+            <Entry x:Name="EnterRight" Text="0" HorizontalTextAlignment="Center" FontSize="18" Keyboard="Numeric" Grid.Column="2" Grid.Row="1"/>
+            <Button x:Name="ConvertLeft" Margin="0,20,0,0" Text="⥂" FontSize="25" Grid.Column="1" Grid.Row="2" WidthRequest="50" HeightRequest="50"
+                    Clicked="ConvertLeftClicked"/>
+            <Button x:Name="ConvertRight" Margin="0,20,0,0" Text="⥃" FontSize="25" Grid.Column="2" Grid.Row="2" WidthRequest="50" HeightRequest="50"
+                    Clicked="ConvertRightClicked"/>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

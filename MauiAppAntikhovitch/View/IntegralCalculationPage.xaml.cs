@@ -37,7 +37,7 @@ public partial class IntegralCalculationPage : ContentPage
     private async Task<double> CalculateIntegration(CancellationToken cancellationToken)
     {
         Debug.WriteLine($"main thread =====================>{Thread.CurrentThread.ManagedThreadId}");
-        double step = 0.0001;
+        double step = 0.00001;
         double result = 0;
         double currentProgress = 0;
 
